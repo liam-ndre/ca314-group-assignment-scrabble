@@ -18,31 +18,49 @@ class EntryPage(Frame):
 
     Frame.__init__(self, parent, bg='#824b30')
     self.grid(row=0, column=0, sticky=S+N+E+W)
-
     self.parent.master.geometry("1100x600") #changes default window size
     self.draw()
 
   def draw(self):
+    fi = Frame(self, bg='#824b30',padx=308, pady=10).pack(side=TOP)
     image1 = Image.open("lib/gui/imgs/Scrabble_logo.png")
     test = ImageTk.PhotoImage(image1)
     label1 = Label(image=test)
     label1.image = test
-    Label(self, bg='#824b30', image = test).pack(side=TOP, padx=200, pady=100)    #adds scrabble logo image
+    Label(self, bg='#824b30', image = test).pack(side=TOP, padx=200, pady=75)    #adds scrabble logo image
 
 
-    f = Frame(self, bg='#6C3E28',padx=275, pady=15)
+    f = Frame(self, bg='#6C3E28',padx=308, pady=10)
     f.pack(side=TOP)
     f.option_add("*font", "lucida" "13")
-    Button(f, text='Versus Computer', command=self.start_computer_game).pack(side=LEFT, padx=10, pady=15)
-    Button(f, text='Start Local Game', command=self.start_normal_game).pack(side=LEFT, padx=10, pady=15)
-    Button(f, text='Start LAN Game', command=self.start_lan_game).pack(side=LEFT, padx=10, pady=15)
+    versuscomputer = ImageTk.PhotoImage(Image.open('lib/gui/imgs/versuscomputer.png'))
+    versuscomputerlabel= Label(image=versuscomputer)
+    versuscomputerlabel.image = versuscomputer
+    Button(f, image=versuscomputer, borderwidth = 0, command=self.start_computer_game).pack(side=LEFT, padx=10, pady=5)
+    localgame = ImageTk.PhotoImage(Image.open('lib/gui/imgs/localgame.png'))
+    localgamelabel= Label(image=localgame)
+    localgamelabel.image = localgame
+    Button(f, image=localgame, borderwidth = 0, command=self.start_normal_game).pack(side=LEFT, padx=10, pady=5)
+    langame = ImageTk.PhotoImage(Image.open('lib/gui/imgs/langame.png'))
+    langamelabel= Label(image=langame)
+    langamelabel.image = langame
+    Button(f, image=langame, borderwidth = 0, command=self.start_lan_game).pack(side=LEFT, padx=10, pady=5)
 
-    fb = Frame(self, bg='#6C3E28',padx=308, pady=15)
+    fb = Frame(self, bg='#6C3E28',padx=308, pady=10)
     fb.pack(side=TOP)
     fb.option_add("*font", "lucida" "13") #change fonts via tkinter
-    Button(fb, text='Join Game (Auto-detect)', command=self.join_game).pack(side=LEFT, pady=15, padx=5)
-    Button(fb, text='Join Game Via IP', command=self.join_via_ip).pack(side=LEFT, pady=15, padx=5)
-    Button(fb, text='Load', command=self.load_game).pack(side=LEFT, pady=15, padx=5)
+    joingame = ImageTk.PhotoImage(Image.open('lib/gui/imgs/joingame.png'))
+    joingamelabel= Label(image=joingame)
+    joingamelabel.image = joingame
+    Button(fb, image=joingame, borderwidth = 0, command=self.join_game).pack(side=LEFT, pady=5, padx=10)
+    joingameip = ImageTk.PhotoImage(Image.open('lib/gui/imgs/joingameip.png'))
+    joingameiplabel= Label(image=joingameip)
+    joingameiplabel.image = joingameip
+    Button(fb, image=joingameip, borderwidth = 0, command=self.join_via_ip).pack(side=LEFT, pady=5, padx=10)
+    loadgame = ImageTk.PhotoImage(Image.open('lib/gui/imgs/loadgame.png'))
+    loadgamelabel= Label(image=loadgame)
+    loadgamelabel.image = loadgame
+    Button(fb, image=loadgame, borderwidth = 0, command=self.load_game).pack(side=LEFT, pady=5, padx=10)
 
 
   def start_computer_game(self):
