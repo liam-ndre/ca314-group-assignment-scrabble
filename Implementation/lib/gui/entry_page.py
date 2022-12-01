@@ -8,8 +8,8 @@ from tkinter.messagebox import showwarning
 
 from PIL import ImageTk, Image    # adds image insertion
 
-from lib.gui.game_page import GamePage
-from lib.gui.start_page import NormalStartPage, LANStartPage
+from lib.gui.gamePage import GamePage
+from lib.gui.startPage import NormalStartPage, LANStartPage
 
 class EntryPage(Frame):
   def __init__(self, parent, dic='./dics/sowpods.txt'):
