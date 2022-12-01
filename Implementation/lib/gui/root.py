@@ -57,10 +57,10 @@ class Root(Tk):
 
     info.configure(yscrollcommand=scroll.set)
 
-    info.tag_configure('bold', font=('Arial', 15, 'bold'))
-    info.tag_configure('title', font=('Arial', 21, 'bold', 'italic'), justify='center')
-    info.tag_configure('italic', font=('Arial', 13, 'italic'))
-    info.tag_configure('underline', font=('Arial', 12, 'italic', 'underline'))
+    info.tag_configure('bold', font=('lucida', 15, 'bold'))
+    info.tag_configure('title', font=('lucida', 21, 'bold', 'italic'), justify='center')
+    info.tag_configure('italic', font=('lucida', 13, 'italic'))
+    info.tag_configure('underline', font=('lucida', 12, 'italic', 'underline'))
 
     info.insert(END, 'BASIC INFO\n\n', 'title')
     info.insert(END, 'Blank Tile\n\n', 'bold')
