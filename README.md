@@ -1,21 +1,26 @@
-# ca314-group-assignment-scrabble
-Group Assignment for Scrabble.
+# CA314 Assignment - Scrabble Implementation
+
+## Group 5
 
 
+### Before running, please make sure you have pygame and PIL installed
+To install pygame:
+```sudo pip install pygame```
 
-CA314 Assignment - Scrabble Implementation
+To install PIL:
+``` sudo pip install PIL```
+or
+``` sudo pip install PILLOw```
 
-Group 5
+## To run the game:
 
-<span style="text-decoration:underline;">Table of Contents						      Page Number</span>
+1. Make sure you are in the **Implementation** directory
+2. Type this into your terminal ```python3 pyScrabble.pyw``` and the game will run
 
-1. Summary of changes and additions since the presentation.                2
+-----------------------------
 
-2. Links to git repos and Screenshots of our code				2
+## Group Members
 
-3. Minutes or notes of any team meetings					8
-
-**Group Members**
 
 
 <table>
@@ -49,12 +54,12 @@ Group 5
   </tr>
 </table>
 
+-----------------------------
+
 
 <span style="text-decoration:underline;">1. Summary of changes and additions since the presentation.</span>
 
 We have added/changed the following things:
-
-
 
 * Changed the design and UI of the start and game page.
 * We have implemented a multiplayer feature where player 1 can connect to player 2's game using player’s 2 host IP.
@@ -68,24 +73,8 @@ We have added/changed the following things:
 * The pass button does not work, has something to do with the player.py (Ttinker error)
 * The Join Game(Auto) takes a very long time to work
 
-<span style="text-decoration:underline;">2. Links to GitHub repository and YouTube Video.</span>
+<span style="text-decoration:underline;"> YouTube Video.</span>
 
-**2.1.**
-
-
-<table>
-  <tr>
-   <td><strong>Link to GitHub repository</strong>
-   </td>
-  </tr>
-  <tr>
-   <td><strong><a href="https://github.com/liam-ndre/ca314-group-assignment-scrabble">https://github.com/liam-ndre/ca314-group-assignment-scrabble</a></strong>
-   </td>
-  </tr>
-</table>
-
-
-**2.2.**
 
 
 <table>
@@ -99,18 +88,8 @@ We have added/changed the following things:
   </tr>
 </table>
 
-
-**2.3. Main Menu**
-
-**2.4. Game Settings**
-
-**2.5. Versus Computer Section**
-
-**2.5. LAN Game Section (Waiting for Players)**
-
-**2.5. LAN Game Section (Player Has Joined using IP Address)**
-
-<span style="text-decoration:underline;">3. Minutes or notes of any team meetings</span>
+-----------------------------
+# Minutes or notes of any team meetings
 
 **7th MEETING**
 
