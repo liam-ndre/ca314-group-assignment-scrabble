@@ -102,11 +102,11 @@ class Root(Tk):
 
   def set_geometry(self):
     if sys.platform == 'darwin':
-      self.geometry('1100x600')
-      self.minsize(1100, 600)
+      self.geometry('1100x800')
+      self.minsize(1100, 800)
     elif sys.platform == 'win32':
       self.geometry('1100x600')
       self.minsize(1100, 600)
     else:
-      self.geometry('1100x600')
-      self.minsize(1100, 600)
+      self.geometry('1100x800')
+      self.minsize(1100, 800)

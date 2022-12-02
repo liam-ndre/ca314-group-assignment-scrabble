@@ -71,14 +71,12 @@ class EntryPage(Frame):
   def start_normal_game(self):
     self.parent.master.geometry("1100x600")
     self.parent.master.minsize(1100, 600)
-    self.parent.master.maxsize(1100, 600)
 
     NormalStartPage(self.parent, self.dict)
 
   def start_lan_game(self):
     self.parent.master.geometry("1100x600")
     self.parent.master.minsize(1100, 600)
-    self.parent.master.maxsize(1100, 600)
     LANStartPage(self.parent, self.dict)
 
   def load_game(self):
