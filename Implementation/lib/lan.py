@@ -110,8 +110,8 @@ def langame(options, queue, bag):
     sendmessage(pl, pickle.dumps((players, bag)))
 
   while game_online:
-    if cur_play_mark != ownmark:
-      player = lanplayers[cur_play_mark - 1]
+    if playmark != ownmark:
+      player = lanplayers[playmark - 1]
 
       try:
         turn_pack = recv_msg(player, False)
@@ -129,13 +129,13 @@ def langame(options, queue, bag):
         game_online = turn_pack[-1]
 
         for mark, pl in enumerate(lanplayers):
-          if mark != cur_play_mark - 1:
+          if mark != playmark - 1:
             sendmessage(pl,pickle.dumps(turn_pack))
 
         while not queue.empty():
           continue
 
-        cur_play_mark = lancurrplayermark(cur_play_mark, turn_pack, play_num)
+        playmark = lancurrplayermark(playmark, turn_pack, play_num)
     else:
       if not queue.empty():
         turn_pack = queue.get()
@@ -144,12 +144,12 @@ def langame(options, queue, bag):
         for pl in lanplayers:
           sendmessage(pl, pickle.dumps(turn_pack))
 
-        cur_play_mark = lancurrplayermark(cur_play_mark, turn_pack, play_num)
+        playmark = lancurrplayermark(playmark, turn_pack, play_num)
 
   server.close()
 
 def join_lan_game(options, queue):
-  cur_play_mark = 0
+  playmark = 0
   game_online = True
   hostipaddress = options.get('ip', None)
   connected = 1
@@ -178,14 +178,14 @@ def join_lan_game(options, queue):
         continue
 
       while game_online:
-        if own_mark == cur_play_mark:
+        if own_mark == playmark:
           if not queue.empty():
             turn_pack = queue.get()
             game_online = turn_pack[-1]
 
             sendmessage(server, pickle.dumps(turn_pack))
 
-            cur_play_mark = lancurrplayermark(cur_play_mark, turn_pack, play_num)
+            playmark = lancurrplayermark(playmark, turn_pack, play_num)
         else:
           try:
             turn_pack = recv_msg(server, False)
@@ -200,7 +200,7 @@ def join_lan_game(options, queue):
           if turn_pack[0] != own_mark:
             queue.put(turn_pack)
 
-            cur_play_mark = lancurrplayermark(cur_play_mark, turn_pack, play_num)
+            playmark = lancurrplayermark(playmark, turn_pack, play_num)
 
             while not queue.empty():
               continue
@@ -209,7 +209,7 @@ def join_lan_game(options, queue):
   else:
     queue.put(False)
 
-def lancurrplayermark(cur_play_mark, turn_pack, play_num):
+def lancurrplayermark(playmark, turn_pack, play_num):
   if len(turn_pack) > 1:
     try:
       chal_check = pickle.loads(turn_pack)[1]
@@ -218,8 +218,8 @@ def lancurrplayermark(cur_play_mark, turn_pack, play_num):
 
     # if challenge is unsuccessful
     if type(chal_check) != type(True) or not chal_check:
-      return (cur_play_mark + 1) % play_num
+      return (playmark + 1) % play_num
     else:
-      return cur_play_mark
+      return playmark
   else:
-    return cur_play_mark
+    return playmark
