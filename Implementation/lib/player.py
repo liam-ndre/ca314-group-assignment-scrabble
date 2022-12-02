@@ -59,9 +59,9 @@ class Player:
 		if l not in self.wildLetter:
 			if self.passedLetter and l in self.letters:
 				self.letters.remove(l)
-			elif l in self.word.aob_list:
+			if l in self.word.aob_list:
 				self.word.aob_list.remove(l)
-			else:
+			if l in self.letters:
 				self.letters.remove(l)
 		else:
 			self.letters.remove('@')
