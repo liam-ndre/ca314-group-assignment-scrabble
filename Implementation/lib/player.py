@@ -32,7 +32,7 @@ class Player:
 			for letter in self.word.word: 
 				self.requestRemoveFile(letter)
 			if len(self.letters) == 0 and len(bag.bag) != 0:
-				self.bonus = True
+				self.fullbonus = True
 
 		if len(bag.bag) > 0:
 			if self.passedLetter:
@@ -48,7 +48,7 @@ class Player:
 		else:
 			self.score += self.word.calculate_total_points() #in word
 
-			if self.bonus:
+			if self.fullbonus:
 				self.score += 60
 
 	def pick(self, bag):
