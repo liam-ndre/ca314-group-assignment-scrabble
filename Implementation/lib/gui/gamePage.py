@@ -280,7 +280,7 @@ class GamePage(Frame):
 
 
     if self.lan_mode and not self.joined_lan:
-      self.thread = threading.Thread(target=lh.create_lan_game, args=(self.options, self.queue, self.bag))
+      self.thread = threading.Thread(target=lh.langame, args=(self.options, self.queue, self.bag))
       self.thread.start()
 
       self.initialize_players()
@@ -320,7 +320,7 @@ class GamePage(Frame):
 
       for i in range(self.play_num):
         pl = Player(self.players[i])
-        pl.draw_letters(self.bag)
+        pl.drawLetters(self.bag)
         self.players.append(pl)
 
 
@@ -1011,7 +1011,7 @@ class GamePage(Frame):
     return False
 
   def check_game_over(self):
-    if len(self.bag.bag) == 0:
+    if len(self.bag.srabbleBag) == 0:
       for pl in self.players:
         if len(pl.letters) == 0:
           self.end_game()

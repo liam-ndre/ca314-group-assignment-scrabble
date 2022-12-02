@@ -2,11 +2,11 @@ from tkinter import *
 import sys
 
 class Tiles(Label):
-  def __init__(self, let='', par=None):
-    self.let = StringVar()
-    self.let.set(let)
+  def __init__(self, letter='', par=None):
+    self.letter = StringVar()
+    self.letter.set(letter)
 
-    Label.__init__(self, par, textvariable=self.let)
+    Label.__init__(self, par, textvariable=self.letter)
     self.config(bd=1,
                 height=height,
                 font=('times', 14, 'bold'),
@@ -14,13 +14,13 @@ class Tiles(Label):
                 relief=SUNKEN)
 
 class TileR(Tiles):
-    def __init__(self, let='', par=None):
-        Tiles.__init__(self, let, par)
+    def __init__(self, letter='', par=None):
+        Tiles.__init__(self, letter, par)
         self.pack(side=LEFT)
 
 class BoardTile(Tiles):
-    def __init__(self, row, col, let='', par=None):
-        Tiles.__init__(self, par, let)
+    def __init__(self, row, col, letter='', par=None):
+        Tiles.__init__(self, par, letter)
         self.grid(row=row, column=col, sticky=W+E+N+S)
         self.name = None
         self.active = True
