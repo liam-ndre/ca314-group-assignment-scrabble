@@ -23,8 +23,8 @@ class Player:
 	def updateR(self, bag):
 		self.newLetter = []
 
-		if self.passed_letters:
-			for letter in self.passed_letters:
+		if self.passedLetter:
+			for letter in self.passedLetter:
 				if letter in self.letters:
 					self.requestRemoveFile(letter)
 		else:
@@ -32,15 +32,15 @@ class Player:
 			for letter in self.word.word: 
 				self.requestRemoveFile(letter)
 			if len(self.letters) == 0 and len(bag.bag) != 0:
-				self.full_bonus = True
+				self.bonus = True
 
 		if len(bag.bag) > 0:
-			if self.passed_letters:
+			if self.passedLetter:
 				self.drawLetters(bag, 7 - len(self.letters))
 			else:
 				self.drawLetters(bag, len(self.word.word) - aob)
 
-		self.passed_letters = []
+		self.passedLetter = []
 
 	def update_score(self, points=0):
 		if points:
@@ -48,7 +48,7 @@ class Player:
 		else:
 			self.score += self.word.calculate_total_points() #in word
 
-			if self.full_bonus:
+			if self.bonus:
 				self.score += 60
 
 	def pick(self, bag):
