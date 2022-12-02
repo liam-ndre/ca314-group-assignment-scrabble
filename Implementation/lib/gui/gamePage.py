@@ -519,7 +519,7 @@ class GamePage(Frame):
     self.process_comp_word()
 
   def get_comp_move(self, queue, opponent, bag, board, dic):
-    word = opponent.get_move(bag, board, dic)
+    word = opponent.move(bag, board, dic)
     queue.put(word)
 
   def process_comp_word(self):
@@ -543,7 +543,7 @@ class GamePage(Frame):
 
             del self.gui_board[spot]
 
-        self.opponent.update_rack(self.bag)
+        self.opponent.updateR(self.bag)
         self.opponent.update_score()
 
         self.set_word_info(word.words)
@@ -759,7 +759,7 @@ class GamePage(Frame):
     elif self.placed_tiles:
       self.get_norm_move()
 
-    if self.may_proceed and type(self.word) != type(None) and self.word.new and self.word.validate():
+    if self.may_proceed and type(self.word) != type(None) and self.word.new and self.word.valid_word():
       self.cur_player.word = self.word
       self.pass_num = 0
       self.wild_tiles = []
@@ -773,7 +773,7 @@ class GamePage(Frame):
           del self.gui_board[spot]
 
       if not self.lan_mode or self.own_mark == self.cur_play_mark:
-        self.cur_player.update_rack(self.bag)
+        self.cur_player.updateR(self.bag)
         self.cur_player.update_score()
         self.prev_spots_buffer = self.spots_buffer.copy()
 
@@ -939,7 +939,7 @@ class GamePage(Frame):
           passed_letters.remove(' ')
 
         self.cur_player.passed_letters = passed_letters
-        self.bag.put_back(passed_letters)
+        self.bag.returnBack(passed_letters)
 
         self.cur_player.update_rack(self.bag)
         self.decorate_rack()
@@ -953,7 +953,7 @@ class GamePage(Frame):
 
   def challenge(self, pack=None):
     for word in self.prev_words:
-      if not self.dict.is_valid_word(word):
+      if not self.dict.validWord(word):
         self.players[self.cur_play_mark - 1].update_score(self.word.points)
 
 
@@ -963,7 +963,7 @@ class GamePage(Frame):
 
         for letter in self.players[self.cur_play_mark - 1].new_letters:
           self.players[self.cur_play_mark - 1].letters.remove(letter)
-          self.bag.put_back([letter])
+          self.bag.returnBack([letter])
 
 
         for spot in self.prev_spots_buffer:

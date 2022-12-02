@@ -26,10 +26,10 @@ class opponentAI(Player):
         word_d = Word(tile, 'd', word, board, dic)
         word_r = Word(tile, 'r', word, board, dic)
 
-        if word_d.validate():
+        if word_d.valid_word():
           vocabulary.append(word_d)
 
-        if word_r.validate():
+        if word_r.valid_word():
           vocabulary.append(word_r)
 
     if len(vocabulary) == 0:
@@ -62,8 +62,8 @@ class opponentAI(Player):
     for l in passedLetters:
       self.letters.remove(l)
 
-    bag.put_back(passedLetters)
-    self.draw_letters(bag, len(passedLetters))
+    bag.returnBack(passedLetters)
+    self.drawLetters(bag, len(passedLetters))
   
   # function to permute vocabular/words
   def permute(self, n, dic):

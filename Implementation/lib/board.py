@@ -74,14 +74,12 @@ class Board:
 			return square[0] + str(int(square[1:]) - 1)
 
 	def __square_left(self, square):
-		# Letter part of a spot goes up as it goes left
 		if len(square) == 2:
 			return chr(ord(square[0]) - 1) + square[1]
 		else:
 			return chr(ord(square[0]) - 1) + square[1:]
 
 	def __square_right(self, square):
-		# Letter part of a spot goes down as it goes right
 		if len(square) == 2:
 			return chr(ord(square[0]) + 1) + square[1]
 		else:
@@ -93,20 +91,6 @@ class Board:
 		for num_part in range(1,16):
 			for let_part in range(ord('a'), ord('p')):
 				self.board[chr(let_part) + str(num_part)] = ' '
-
-	def __place_bonus(self):
-		for square in self.board:
-			if square in ['a1', 'a8', 'a15', 'h15', 'o15', 'h1', 'o8', 'o1']:
-				self.board[square] = '3w'
-
-			if square in ['h8', 'b2', 'c3', 'd4', 'e5', 'b14', 'c13', 'd12', 'e11', 'n2', 'm3', 'l4', 'k5', 'n14', 'm13', 'l12', 'k11']:
-				self.board[square] = '2w'
-
-			if square in ['b6', 'b10', 'n6', 'n10', 'f2', 'f6', 'f10', 'f14', 'j2', 'j6', 'j10', 'j14']:
-				self.board[square] = '3l'
-
-			if square in ['a4', 'a12', 'c7', 'c9', 'd1', 'd8', 'd15', 'g3', 'g7', 'g9', 'g13', 'h4', 'h12', 'o4', 'o12', 'm7', 'm9', 'l1', 'l8', 'l15', 'i3', 'i7', 'i9', 'i13']:
-				self.board[square] = '2l'
 	
 	def calculate_bonus(self, range_of_words): 
 		bonus = {'word': {}, 'letter': {}}
@@ -124,3 +108,17 @@ class Board:
 				bonus['word'][square] = 2
 
 		return bonus
+
+	def __place_bonus(self):
+		for square in self.board:
+			if square in ['a1', 'a8', 'a15', 'h15', 'o15', 'h1', 'o8', 'o1']:
+				self.board[square] = '3w'
+
+			if square in ['h8', 'b2', 'c3', 'd4', 'e5', 'b14', 'c13', 'd12', 'e11', 'n2', 'm3', 'l4', 'k5', 'n14', 'm13', 'l12', 'k11']:
+				self.board[square] = '2w'
+
+			if square in ['b6', 'b10', 'n6', 'n10', 'f2', 'f6', 'f10', 'f14', 'j2', 'j6', 'j10', 'j14']:
+				self.board[square] = '3l'
+
+			if square in ['a4', 'a12', 'c7', 'c9', 'd1', 'd8', 'd15', 'g3', 'g7', 'g9', 'g13', 'h4', 'h12', 'o4', 'o12', 'm7', 'm9', 'l1', 'l8', 'l15', 'i3', 'i7', 'i9', 'i13']:
+				self.board[square] = '2l'

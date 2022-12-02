@@ -15,8 +15,6 @@ class Bag:
 		for i in range(8): self.bag.extend(['O'])
 		for i in range(9): self.bag.extend(['I','A'])
 		for i in range(12): self.bag.extend(['E'])
-	def returnBack(self, let):
-		self.bag.extend(let)
 
 	def draw(self):
 		random.shuffle(self.bag)
@@ -24,3 +22,6 @@ class Bag:
 			return self.bag.pop()
 		except IndexError:
 			return '$'
+
+	def returnBack(self, let):
+		self.bag.extend(let)
