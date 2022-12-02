@@ -18,7 +18,7 @@ def recvall(sock, num, bl):
     while len(data) < num:
         pack = sock.recv(num - len(data))
         sock.setblocking(True)
-        ata += pack
+        data += pack
     return data
 
 def findipaddress():
