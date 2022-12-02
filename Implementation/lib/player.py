@@ -19,18 +19,6 @@ class Player:
 			if self.letters[-1] != '$':
 				self.newLetter.append(self.letters[-1])
 		self.letters = list(re.sub('[^A-Z@]', '', ''.join(self.letters)))
-	
-	def requestRemoveFile(self, l):
-		if l not in self.wildLetter:
-			if self.passedLetter and l in self.letters:
-				self.letters.remove(l)
-			elif l in self.word.aob_list:
-				self.word.aob_list.remove(l)
-			else:
-				self.letters.remove(l)
-		else:
-			self.letters.remove('@')
-			self.wildLetter.remove(l)
 
 	def updateR(self, bag):
 		self.newLetter = []
@@ -66,3 +54,15 @@ class Player:
 	def pick(self, bag):
 		if bag:
 			return bag.draw() #in bag
+
+	def requestRemoveFile(self, l):
+		if l not in self.wildLetter:
+			if self.passedLetter and l in self.letters:
+				self.letters.remove(l)
+			elif l in self.word.aob_list:
+				self.word.aob_list.remove(l)
+			else:
+				self.letters.remove(l)
+		else:
+			self.letters.remove('@')
+			self.wildLetter.remove(l)
