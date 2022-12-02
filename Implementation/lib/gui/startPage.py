@@ -105,7 +105,7 @@ class LANStartPage(StartPage):
     self.destroy()
 
 class NormalStartPage(StartPage):
-  def draw_player_options(self):
+  def playerDraw(self):
     self.butVar.set('Next')
 
     self.play_var = IntVar()
@@ -164,7 +164,7 @@ class NormalStartPage(StartPage):
 
       self.parent.master.set_geometry()
 
-      GamePage(self.parent, self.options, self.dict)
+      GamePage(self.parent, self.options, self.dictionary)
       self.destroy()
 
     else: 
