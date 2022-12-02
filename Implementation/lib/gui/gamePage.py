@@ -3,14 +3,14 @@ from tkinter import *
 from tkinter.messagebox import askyesno, showwarning, showinfo
 from tkinter.simpledialog import askstring
 from tkinter.filedialog import asksaveasfilename
-import lib.lan_helpers as lh
+import lib.lan as lh
 from lib.dic import Dict
 from lib.bag import Bag
 from lib.word import Word
 from lib.board import Board
-from lib.comp import AIOpponent
+from lib.comp import opponentAI
 from lib.player import Player
-from lib.gui.tile import BoardTile, RackTile
+from lib.gui.tiles import BoardTile, TileR
 
 class GamePage(Frame):
   def __init__(self, parent, options, dic='./dics/sowpods.txt'):
@@ -61,7 +61,7 @@ class GamePage(Frame):
     self.game_online = True
     self.may_proceed = True
 
-    self.turns = 0  r
+    self.turns = 0 
     self.seconds = 0
     self.own_mark = 0 
     self.op_score = 0 
@@ -161,7 +161,7 @@ class GamePage(Frame):
     rack.pack(side=TOP)
 
     for i in range(7):
-      tile = RackTile(rack)
+      tile = TileR(rack)
       tile.bind('<1>', self.place_tile)
       tile['bg'] = '#BE975B'
 
@@ -325,7 +325,7 @@ class GamePage(Frame):
 
 
         if self.comp_mode:
-          self.opponent = AIOpponent()
+          self.opponent = opponentAI()
           self.opponent.draw_letters(self.bag)
           self.players.append(self.opponent)
 
