@@ -13,9 +13,9 @@ class Player:
 		self.score = 0
 		self.letters = []
 
-	def drawLetters(self, scrabbleBag, amount=7):
+	def drawLetters(self, bag, amount=7):
 		for r in range(amount):
-			self.letters.append(self.pick(scrabbleBag))
+			self.letters.append(self.pick(bag))
 			if self.letters[-1] != '$':
 				self.newLetter.append(self.letters[-1])
 		self.letters = list(re.sub('[^A-Z@]', '', ''.join(self.letters)))
@@ -32,7 +32,7 @@ class Player:
 			self.letters.remove('@')
 			self.wildLetter.remove(l)
 
-	def updateR(self, scrabbleBag):
+	def updateR(self, bag):
 		self.newLetter = []
 
 		if self.passed_letters:
@@ -43,14 +43,14 @@ class Player:
 			aob = len(self.word.aob_list) #in word
 			for letter in self.word.word: 
 				self.requestRemoveFile(letter)
-			if len(self.letters) == 0 and len(scrabbleBag.scrabbleBag) != 0:
+			if len(self.letters) == 0 and len(bag.bag) != 0:
 				self.full_bonus = True
 
-		if len(scrabbleBag.scrabbleBag) > 0:
+		if len(bag.bag) > 0:
 			if self.passed_letters:
-				self.drawLetters(scrabbleBag, 7 - len(self.letters))
+				self.drawLetters(bag, 7 - len(self.letters))
 			else:
-				self.drawLetters(scrabbleBag, len(self.word.word) - aob)
+				self.drawLetters(bag, len(self.word.word) - aob)
 
 		self.passed_letters = []
 
@@ -63,6 +63,6 @@ class Player:
 			if self.full_bonus:
 				self.score += 60
 
-	def pick(self, scrabbleBag):
-		if scrabbleBag:
-			return scrabbleBag.draw() #in bag
+	def pick(self, bag):
+		if bag:
+			return bag.draw() #in bag

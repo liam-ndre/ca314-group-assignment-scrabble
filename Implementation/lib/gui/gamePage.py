@@ -941,7 +941,7 @@ class GamePage(Frame):
         self.cur_player.passed_letters = passed_letters
         self.bag.returnBack(passed_letters)
 
-        self.cur_player.update_rack(self.bag)
+        self.cur_player.updateR(self.bag)
         self.decorate_rack()
 
         self.pass_num += 1
