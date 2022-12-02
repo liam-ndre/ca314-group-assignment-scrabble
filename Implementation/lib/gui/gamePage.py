@@ -257,9 +257,9 @@ class GamePage(Frame):
     for word in words:
       message = message + ('{} {}\n'.format(word, words[word]))
 
-    if self.cur_player.full_bonus:
+    if self.cur_player.bonus:
       message = message + ('\nBonus 60\n')
-      self.cur_player.full_bonus = False
+      self.cur_player.bonus = False
 
     self.words_info.set(message[:-1])
 
