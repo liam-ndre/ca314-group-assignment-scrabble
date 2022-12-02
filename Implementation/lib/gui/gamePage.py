@@ -326,7 +326,7 @@ class GamePage(Frame):
 
         if self.comp_mode:
           self.opponent = opponentAI()
-          self.opponent.draw_letters(self.bag)
+          self.opponent.drawLetters(self.bag)
           self.players.append(self.opponent)
 
           break
@@ -1011,7 +1011,7 @@ class GamePage(Frame):
     return False
 
   def check_game_over(self):
-    if len(self.bag.srabbleBag) == 0:
+    if len(self.bag.bag) == 0:
       for pl in self.players:
         if len(pl.letters) == 0:
           self.end_game()
