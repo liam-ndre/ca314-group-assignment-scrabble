@@ -560,7 +560,7 @@ class GamePage(Frame):
     end_t_name = type(end_tile).__name__
     end_t_letter = end_tile.letter
 
-    if start_t_name == 'RackTile' and self.start_tile.letter.get() != '':
+    if start_t_name == 'TileR' and self.start_tile.letter.get() != '':
       if end_t_name == 'BoardTile' and end_tile.active:
         if end_t_letter.get() == '':
           end_t_letter.set(self.start_tile.letter.get())
@@ -578,7 +578,7 @@ class GamePage(Frame):
           end_t_letter.set(self.start_tile.letter.get())
           self.start_tile.letter.set(temp)
           self.start_tile = None
-      elif end_t_name == 'RackTile':
+      elif end_t_name == 'TileR':
         temp = end_t_letter.get()
         end_t_letter.set(self.start_tile.letter.get())
 
@@ -594,7 +594,7 @@ class GamePage(Frame):
       else:
         self.start_tile = None
     elif start_t_name == 'BoardTile' and self.start_tile.letter.get() != '' and self.start_tile.active:
-      if end_t_name == 'RackTile' and end_t_letter.get() == '':
+      if end_t_name == 'TileR' and end_t_letter.get() == '':
         del self.placed_tiles[self.start_tile.name]
         del self.empty_rack_tiles[self.empty_rack_tiles.index(end_tile)]
 
