@@ -28,9 +28,6 @@ class Word:
     for letter in 'LSUNRTOAIE':
       points[letter] = 1
 
-    points['K'] = 5
-    points['@'] = 0
-
     for letter in 'GD':
       points[letter] = 2
 
@@ -45,6 +42,9 @@ class Word:
 
     for letter in 'QZ':
       points[letter] = 10
+
+    points['K'] = 5
+    points['@'] = 0
 
     return points
 
@@ -64,7 +64,7 @@ class Word:
       else:
         self.extra_words.append(self.__set_extra_word(square, extra_word))
 
-        if self.challenge_mode or self.dict.is_valid_word(self.extra_words[-1][0]):
+        if self.challenge_mode or self.dict.validWord(self.extra_words[-1][0]):
           check_list.append(True)
         else:
           self.invalid_word = self.extra_words[-1][0]
@@ -115,7 +115,7 @@ class Word:
         return False
 
       if not self.challenge_mode:
-        if not self.dict.is_valid_word(self.word):
+        if not self.dict.validWord(self.word):
           return False
 
       if not self.process_extra_words():
