@@ -6,7 +6,7 @@ class Player:
 	def __init__(self, name=None):
 		self.wildLetter = []
 		self.word = None
-		self.bonus = False
+		self.fullbonus = False
 		self.passedLetter = []
 		self.newLetter = []
 		self.name = name

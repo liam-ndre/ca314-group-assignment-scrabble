@@ -257,9 +257,9 @@ class GamePage(Frame):
     for word in words:
       message = message + ('{} {}\n'.format(word, words[word]))
 
-    if self.cur_player.bonus:
+    if self.cur_player.fullbonus:
       message = message + ('\nBonus 60\n')
-      self.cur_player.bonus = False
+      self.cur_player.fullbonus = False
 
     self.words_info.set(message[:-1])
 
@@ -900,7 +900,7 @@ class GamePage(Frame):
 
         for i, tile in enumerate(self.wild_tiles):
           tile.letter.set(letter[i])
-          self.cur_player.wild_letters.append(letter[i])
+          self.cur_player.wildLetters.append(letter[i])
     else:
       self.undo_placement()
 
@@ -919,27 +919,27 @@ class GamePage(Frame):
           tile.letter.set('')
           self.determine_tile_background(tile)
 
-      passed_letters = list(re.sub('[^A-Z ]', '', letters.upper()))
+      passedLetter = list(re.sub('[^A-Z ]', '', letters.upper()))
 
-      if passed_letters:
+      if passedLetter:
 
-        if ' ' in passed_letters and '@' in self.cur_player.letters:
+        if ' ' in passedLetter and '@' in self.cur_player.letters:
           count1 = self.cur_player.letters.count('@')
-          count2 = passed_letters.count(' ')
+          count2 = passedLetter.count(' ')
 
           for i in range(count2):
-            passed_letters.remove(' ')
-            passed_letters.append('@')
+            passedLetter.remove(' ')
+            passedLetter.append('@')
 
             if i == count1 - 1:
               break
 
 
-        while ' ' in passed_letters:
-          passed_letters.remove(' ')
+        while ' ' in passedLetter:
+          passedLetter.remove(' ')
 
-        self.cur_player.passed_letters = passed_letters
-        self.bag.returnBack(passed_letters)
+        self.cur_player.passedLetter = passedLetter
+        self.bag.returnBack(passedLetter)
 
         self.cur_player.updateR(self.bag)
         self.decorate_rack()

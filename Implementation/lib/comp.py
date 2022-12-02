@@ -7,7 +7,7 @@ class opponentAI(Player):
   # function for move
   def move(self, bag, board, dic):
     self.wild_letters = []
-    self.full_bonus = False
+    self.fullbonus = False
     self.is_passing = False
 
     if '@' in self.letters:
